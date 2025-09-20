@@ -1,0 +1,106 @@
+@startuml XRPL_Health_Data_System_Architecture
+
+!define RECTANGLE class
+
+title XRPL 기반 건강데이터 관리 시스템 아키텍처
+
+package "프레젠테이션 계층" {
+  RECTANGLE "웹 애플리케이션\n(React.js)" as WebApp
+  RECTANGLE "모바일 앱\n(React Native)" as MobileApp
+  RECTANGLE "API Gateway\n(Kong/Istio)" as APIGateway
+}
+
+package "애플리케이션 계층" {
+  RECTANGLE "사용자 관리\n서비스" as UserService
+  RECTANGLE "데이터 관리\n서비스" as DataService
+  RECTANGLE "NFT 관리\n서비스" as NFTService
+  RECTANGLE "거래 관리\n서비스" as TradeService
+  RECTANGLE "접근 제어\n서비스" as AccessService
+  RECTANGLE "이벤트 스트리밍\n(Apache Kafka)" as EventStream
+}
+
+package "블록체인 계층" {
+  RECTANGLE "XRPL 네트워크" as XRPL
+  RECTANGLE "스마트 컨트랙트\n(Hooks)" as SmartContract
+  RECTANGLE "NFT 토큰" as NFTToken
+  RECTANGLE "접근 권한 토큰" as AccessToken
+  RECTANGLE "XRP 결제" as XRPPayment
+}
+
+package "데이터 계층" {
+  RECTANGLE "분산 저장소\n(IPFS)" as IPFS
+  RECTANGLE "클라우드 저장소\n(AWS S3)" as CloudStorage
+  RECTANGLE "암호화 키 관리\n(HSM/KMS)" as KeyManagement
+  RECTANGLE "데이터베이스\n(PostgreSQL)" as Database
+}
+
+package "인프라 계층" {
+  RECTANGLE "컨테이너 오케스트레이션\n(Kubernetes)" as K8s
+  RECTANGLE "서비스 메시\n(Istio)" as ServiceMesh
+  RECTANGLE "모니터링\n(Prometheus)" as Monitoring
+  RECTANGLE "로깅\n(ELK Stack)" as Logging
+}
+
+' 연결 관계
+WebApp --> APIGateway
+MobileApp --> APIGateway
+APIGateway --> UserService
+APIGateway --> DataService
+APIGateway --> NFTService
+APIGateway --> TradeService
+APIGateway --> AccessService
+
+UserService --> Database
+DataService --> IPFS
+DataService --> CloudStorage
+DataService --> KeyManagement
+NFTService --> XRPL
+NFTService --> SmartContract
+TradeService --> XRPL
+TradeService --> XRPPayment
+AccessService --> AccessToken
+
+SmartContract --> NFTToken
+SmartContract --> AccessToken
+XRPL --> XRPPayment
+
+UserService --> EventStream
+DataService --> EventStream
+NFTService --> EventStream
+TradeService --> EventStream
+AccessService --> EventStream
+
+ServiceMesh --> UserService
+ServiceMesh --> DataService
+ServiceMesh --> NFTService
+ServiceMesh --> TradeService
+ServiceMesh --> AccessService
+
+K8s --> ServiceMesh
+Monitoring --> K8s
+Logging --> K8s
+
+note right of XRPL
+  - 초당 1,500 TPS
+  - 3-5초 결제 완료
+  - 낮은 거래 수수료
+  - 내장 DEX 지원
+end note
+
+note right of IPFS
+  - 콘텐츠 주소 지정
+  - 분산 저장
+  - 데이터 무결성 보장
+  - 암호화된 데이터 저장
+end note
+
+note bottom of SmartContract
+  주요 스마트 컨트랙트:
+  - 데이터 소유권 관리
+  - 접근 권한 제어
+  - 대여 계약 관리
+  - 판매 거래 처리
+end note
+
+@enduml
+

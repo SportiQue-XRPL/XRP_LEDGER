@@ -1,0 +1,90 @@
+graph TB
+    subgraph "프레젠테이션 계층"
+        WebApp["웹 애플리케이션<br/>(React.js)"]
+        MobileApp["모바일 앱<br/>(React Native)"]
+        APIGateway["API Gateway<br/>(Kong/Istio)"]
+    end
+    
+    subgraph "애플리케이션 계층"
+        UserService["사용자 관리<br/>서비스"]
+        DataService["데이터 관리<br/>서비스"]
+        NFTService["NFT 관리<br/>서비스"]
+        TradeService["거래 관리<br/>서비스"]
+        AccessService["접근 제어<br/>서비스"]
+        EventStream["이벤트 스트리밍<br/>(Apache Kafka)"]
+    end
+    
+    subgraph "블록체인 계층"
+        XRPL["XRPL 네트워크"]
+        SmartContract["스마트 컨트랙트<br/>(Hooks)"]
+        NFTToken["NFT 토큰"]
+        AccessToken["접근 권한 토큰"]
+        XRPPayment["XRP 결제"]
+    end
+    
+    subgraph "데이터 계층"
+        IPFS["분산 저장소<br/>(IPFS)"]
+        CloudStorage["클라우드 저장소<br/>(AWS S3)"]
+        KeyManagement["암호화 키 관리<br/>(HSM/KMS)"]
+        Database["데이터베이스<br/>(PostgreSQL)"]
+    end
+    
+    subgraph "인프라 계층"
+        K8s["컨테이너 오케스트레이션<br/>(Kubernetes)"]
+        ServiceMesh["서비스 메시<br/>(Istio)"]
+        Monitoring["모니터링<br/>(Prometheus)"]
+        Logging["로깅<br/>(ELK Stack)"]
+    end
+    
+    %% 연결 관계
+    WebApp --> APIGateway
+    MobileApp --> APIGateway
+    APIGateway --> UserService
+    APIGateway --> DataService
+    APIGateway --> NFTService
+    APIGateway --> TradeService
+    APIGateway --> AccessService
+    
+    UserService --> Database
+    DataService --> IPFS
+    DataService --> CloudStorage
+    DataService --> KeyManagement
+    NFTService --> XRPL
+    NFTService --> SmartContract
+    TradeService --> XRPL
+    TradeService --> XRPPayment
+    AccessService --> AccessToken
+    
+    SmartContract --> NFTToken
+    SmartContract --> AccessToken
+    XRPL --> XRPPayment
+    
+    UserService --> EventStream
+    DataService --> EventStream
+    NFTService --> EventStream
+    TradeService --> EventStream
+    AccessService --> EventStream
+    
+    ServiceMesh --> UserService
+    ServiceMesh --> DataService
+    ServiceMesh --> NFTService
+    ServiceMesh --> TradeService
+    ServiceMesh --> AccessService
+    
+    K8s --> ServiceMesh
+    Monitoring --> K8s
+    Logging --> K8s
+    
+    %% 스타일링
+    classDef presentation fill:#e1f5fe
+    classDef application fill:#f3e5f5
+    classDef blockchain fill:#e8f5e8
+    classDef data fill:#fff3e0
+    classDef infrastructure fill:#fce4ec
+    
+    class WebApp,MobileApp,APIGateway presentation
+    class UserService,DataService,NFTService,TradeService,AccessService,EventStream application
+    class XRPL,SmartContract,NFTToken,AccessToken,XRPPayment blockchain
+    class IPFS,CloudStorage,KeyManagement,Database data
+    class K8s,ServiceMesh,Monitoring,Logging infrastructure
+
