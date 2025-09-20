@@ -1,0 +1,163 @@
+{
+  "scenarioName": "SportiQue Data Pool Demo - 혈당 데이터 수집",
+  "description": "50명의 당뇨병 전단계 사용자로부터 90일간 혈당 데이터를 수집하는 데이터 풀",
+  "timestamp": "2025-09-20T10:00:00Z",
+  
+  "dataPool": {
+    "poolId": "pool_glucose_202509",
+    "name": "당뇨병 연구를 위한 혈당 데이터 풀",
+    "description": "50명의 당뇨병 전단계 사용자로부터 90일간 아침 공복 혈당 데이터를 수집",
+    "dataType": "glucose",
+    "category": "chronic_disease",
+    
+    "schedule": {
+      "formingStartDate": "2025-09-20",
+      "formingEndDate": "2025-09-30",
+      "activeStartDate": "2025-10-01",
+      "activeEndDate": "2025-12-30",
+      "distributionDate": "2025-12-31"
+    },
+    
+    "targets": {
+      "targetUsers": 50,
+      "minEnterprises": 2,
+      "maxEnterprises": 5,
+      "estimatedBudgetMin": 10000,
+      "estimatedBudgetMax": 20000
+    },
+    
+    "requirements": {
+      "userCriteria": {
+        "ageRange": { "min": 30, "max": 60 },
+        "condition": "prediabetes",
+        "hba1c": { "min": 5.7, "max": 6.4 }
+      },
+      "dataFrequency": "daily",
+      "dataTypes": [{
+        "type": "glucose",
+        "rewardPerEntry": 2
+      }],
+      "qualityBonus": {
+        "A": 1.5,
+        "B": 1.2,
+        "C": 1.0
+      }
+    }
+  },
+  
+  "participants": {
+    "enterprises": [
+      {
+        "enterpriseId": "enterprise_pharma_001",
+        "companyName": "서울제약",
+        "industry": "pharmaceutical",
+        "researchFocus": "diabetes_treatment",
+        "contributionAmount": 5000,
+        "sharePercentage": 40,
+        "walletSeed": "sEdT4zYPvqZmWkpP2L5XeSaJvHg3wYF"
+      },
+      {
+        "enterpriseId": "enterprise_research_002",
+        "companyName": "한국의학연구소",
+        "industry": "medical_research",
+        "researchFocus": "metabolic_disorders",
+        "contributionAmount": 3750,
+        "sharePercentage": 30,
+        "walletSeed": "sEdSKaCy2JT7JaFnNms4RD4gZkm7bTQ"
+      },
+      {
+        "enterpriseId": "enterprise_insurance_003",
+        "companyName": "건강보험공사",
+        "industry": "health_insurance",
+        "researchFocus": "risk_assessment",
+        "contributionAmount": 3750,
+        "sharePercentage": 30,
+        "walletSeed": "sEdVWcx5J9CKNdzHDhBVKLhN3QJZ2n4"
+      }
+    ],
+    
+    "users": [
+      {
+        "userId": "user_001",
+        "nickname": "홍길동",
+        "age": 45,
+        "condition": "prediabetes",
+        "hba1c": 6.0,
+        "walletAddress": "rUser001WalletAddress1234567890",
+        "participationDate": "2025-10-01"
+      },
+      {
+        "userId": "user_002",
+        "nickname": "김영희",
+        "age": 52,
+        "condition": "prediabetes",
+        "hba1c": 5.9,
+        "walletAddress": "rUser002WalletAddress1234567890",
+        "participationDate": "2025-10-01"
+      },
+      {
+        "userId": "user_003",
+        "nickname": "박철수",
+        "age": 38,
+        "condition": "prediabetes",
+        "hba1c": 6.1,
+        "walletAddress": "rUser003WalletAddress1234567890",
+        "participationDate": "2025-10-02"
+      }
+    ]
+  },
+  
+  "sampleData": [
+    {
+      "dataId": "data_001_20251020_glucose",
+      "userId": "user_001",
+      "date": "2025-10-20",
+      "dataType": "glucose",
+      "measurements": {
+        "glucose": {
+          "value": 110,
+          "unit": "mg/dL",
+          "timing": "fasting"
+        }
+      },
+      "quality": {
+        "score": 95,
+        "grade": "A",
+        "completeness": 100,
+        "accuracy": 95,
+        "consistency": 90
+      }
+    },
+    {
+      "dataId": "data_002_20251020_glucose",
+      "userId": "user_002",
+      "date": "2025-10-20",
+      "dataType": "glucose",
+      "measurements": {
+        "glucose": {
+          "value": 105,
+          "unit": "mg/dL",
+          "timing": "fasting"
+        }
+      },
+      "quality": {
+        "score": 88,
+        "grade": "B",
+        "completeness": 100,
+        "accuracy": 85,
+        "consistency": 80
+      }
+    }
+  ],
+  
+  "expectedRewards": {
+    "perDataPointBase": 2,
+    "gradeAReward": 3,
+    "gradeBReward": 2.4,
+    "gradeCReward": 2,
+    "totalDataPoints": 4500,
+    "estimatedTotalReward": 11250,
+    "platformFee": 562.5,
+    "netRewardToUsers": 10687.5
+  }
+}
