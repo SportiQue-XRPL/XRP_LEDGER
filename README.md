@@ -1,4 +1,4 @@
-# SportiQue XRP Ledger 핵심 TypeScript 코드 모음
+<img width="1206" height="2622" alt="image" src="https://github.com/user-attachments/assets/381d1bbd-42bd-4d1a-a7f1-f2c50cb77f83" /># SportiQue XRP Ledger 핵심 TypeScript 코드 모음
 
 SportiQue 프로젝트의 모든 핵심 TypeScript 코드가 체계적으로 정리되어 있습니다.
 
@@ -83,10 +83,15 @@ XRPL 트랜잭션을 처리하고 관리하는 고급 모듈들입니다.
 ### 1. NFT 기반 구독 시스템
 - 구독 NFT 발행으로 서비스 접근 권한 관리
 - 에스크로를 통한 안전한 결제 처리
+<img width="3002" height="1706" alt="image" src="https://github.com/user-attachments/assets/f5cc1ac9-04a0-4d98-aea4-b5cb5d4e60cf" />
+<img width="1206" height="2622" alt="image" src="https://github.com/user-attachments/assets/99e2a0b5-fdd0-451b-ae96-87a05fb07aea" />
 
 ### 2. 데이터 풀 관리
 - 기업과 사용자 간 건강 데이터 거래
 - NFT 기반 데이터 소유권 증명
+<img width="1356" height="1034" alt="image" src="https://github.com/user-attachments/assets/e4915f28-a7e1-437e-a7f0-fc6a4cc5ac67" />
+<img width="1206" height="2622" alt="image" src="https://github.com/user-attachments/assets/ffbdbf16-49e9-495f-b100-15d1fdc24173" />
+
 
 ### 3. 리워드 시스템
 - 데이터 제공자에게 자동 리워드 분배
