@@ -166,15 +166,7 @@ npm run demo:pool
 - 트랜잭션 조회: `https://testnet.xrpl.org/transactions/{txHash}`
 - NFT 조회: `https://testnet.xrpl.org/nft/{nftId}`
 
----
-
-## 📞 지원 및 문의
-
-### 기술 문서
-- [XRPL Documentation](https://xrpl.org/)
-- [NFToken Standard](https://xrpl.org/nftoken.html)
-- [Escrow Transactions](https://xrpl.org/escrow.html)
-
+--
 ### 프로젝트 팀
 - **GitHub**: https://github.com/sportique
 - **Email**: team@sportique.biz
