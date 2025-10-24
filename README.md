@@ -4,32 +4,32 @@
 [![XRPL](https://img.shields.io/badge/XRPL-Mainnet-brightgreen)](https://xrpl.org)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue)](https://www.typescriptlang.org/)
 
-**건강 데이터를 NFT로 토큰화하고, Escrow로 안전하게 거래하는 XRPL 기반 데이터 마켓플레이스**
+**A blockchain-based healthcare data marketplace that tokenizes health data as NFTs and enables secure trading through XRPL Escrow**
 
-SportiQue는 XRP Ledger의 NFTokens, Escrow, MPT(Multi-Purpose Tokens)를 활용하여 개인 건강 데이터의 소유권을 사용자에게 돌려주고, 투명하고 안전한 데이터 거래를 가능하게 합니다.
+SportiQue leverages XRP Ledger's NFTokens, Escrow, and MPT (Multi-Purpose Tokens) to return data ownership to users while enabling transparent and secure data trading.
 
 ## 📄 Documentation
 
 ### 📊 Presentation
-- **[UniQData Pitch Deck (PDF)](./docs/presentation/UniQData_Pitch_Deck.pdf)** - 비즈니스 프레젠테이션 및 서비스 소개
+- **[UniQData Pitch Deck (PDF)](./docs/presentation/UniQData_Pitch_Deck.pdf)** - Business presentation and service overview
 
 ### 📘 Technical Documentation
-- **[XRPL Technical Design (PDF)](./docs/technical/SportiQue_XRPL_Technical_Design.pdf)** - 완전한 시스템 아키텍처 및 XRPL 통합 상세 설명
-- **[XRPL Technical Implementation](./docs/technical/XRPL_TECHNICAL_IMPLEMENTATION.md)** - XRPL 기능 구현 가이드
-- **[XRPL Implementation Links](./docs/technical/XRPL_IMPLEMENTATION_LINKS.md)** - XRPL 기능별 코드 위치
-- **[XRPL Integration Details](./docs/technical/XRPL_INTEGRATION_DETAILS.md)** - XRPL 통합 세부사항
-- **[XRPL Core Requirements](./docs/technical/XRPL_CORE_REQUIREMENTS.md)** - XRPL 핵심 요구사항
+- **[XRPL Technical Design (PDF)](./docs/technical/SportiQue_XRPL_Technical_Design.pdf)** - Complete system architecture and XRPL integration details
+- **[XRPL Technical Implementation](./docs/technical/XRPL_TECHNICAL_IMPLEMENTATION.md)** - XRPL feature implementation guide
+- **[XRPL Implementation Links](./docs/technical/XRPL_IMPLEMENTATION_LINKS.md)** - XRPL feature code locations
+- **[XRPL Integration Details](./docs/technical/XRPL_INTEGRATION_DETAILS.md)** - XRPL integration specifics
+- **[XRPL Core Requirements](./docs/technical/XRPL_CORE_REQUIREMENTS.md)** - XRPL core requirements
 
 ### 🔌 API Documentation
-- **[API Reference](./docs/api/API_DOCUMENTATION.md)** - REST API 엔드포인트 레퍼런스
+- **[API Reference](./docs/api/API_DOCUMENTATION.md)** - REST API endpoints reference
 
 ### 📝 Submission
-- **[Submission Guide](./docs/SUBMISSION_GUIDE.md)** - 해커톤 제출 가이드
+- **[Submission Guide](./docs/SUBMISSION_GUIDE.md)** - Hackathon submission guide
 
 ## 🎯 Key XRPL Features
 
 ### ✅ NFTokens - Data Access Control
-모든 건강 데이터 접근 권한을 NFT로 관리합니다. NFT 소유자만 암호화된 데이터를 복호화할 수 있습니다.
+All health data access rights are managed through NFTs. Only NFT owners can decrypt the encrypted data.
 
 ```typescript
 // core/nft.ts
@@ -41,7 +41,7 @@ const nftId = await mintNFT(wallet, {
 ```
 
 ### ✅ Escrow - Trustless Trading
-기업의 데이터 구매 자금을 Escrow에 잠가 플랫폼 신뢰 없이도 안전한 거래가 가능합니다.
+Enterprise data purchase funds are locked in Escrow, enabling secure transactions without platform trust.
 
 ```typescript
 // core/escrow.ts
@@ -52,7 +52,7 @@ await createEscrow(enterpriseWallet, userWallet, '500', {
 ```
 
 ### ✅ MPT (Multi-Purpose Tokens) - Reward System
-사용자 활동 리워드를 MPT로 배치 처리하여 99.9% 트랜잭션 비용 절감
+User activity rewards are batch processed with MPT, reducing transaction costs by 99.9%.
 
 ```typescript
 // core/mpt.ts
@@ -67,18 +67,18 @@ await createMPToken(platformWallet, {
 ```
 XRP_LEDGER/
 │
-├── 📄 docs/                             # 📚 Documentation
-│   ├── presentation/                    # 비즈니스 프레젠테이션
-│   │   └── UniQData_Pitch_Deck.pdf      # 피치덱 (11.3MB)
-│   ├── technical/                       # 기술 문서
-│   │   ├── SportiQue_XRPL_Technical_Design.pdf  # 시스템 설계 (225KB)
+├── 📄 docs/                             # Documentation
+│   ├── presentation/                    # Business presentations
+│   │   └── UniQData_Pitch_Deck.pdf     # Pitch deck (11.3MB)
+│   ├── technical/                       # Technical documents
+│   │   ├── SportiQue_XRPL_Technical_Design.pdf  # System design (225KB)
 │   │   ├── XRPL_TECHNICAL_IMPLEMENTATION.md
 │   │   ├── XRPL_IMPLEMENTATION_LINKS.md
 │   │   ├── XRPL_INTEGRATION_DETAILS.md
 │   │   └── XRPL_CORE_REQUIREMENTS.md
-│   ├── api/                             # API 문서
+│   ├── api/                             # API documentation
 │   │   └── API_DOCUMENTATION.md
-│   └── SUBMISSION_GUIDE.md              # 제출 가이드
+│   └── SUBMISSION_GUIDE.md              # Submission guide
 │
 ├── 💻 core/                             # XRPL Core Modules
 │   ├── config.ts                        # Network configuration
@@ -92,18 +92,18 @@ XRP_LEDGER/
 │   └── types.ts                         # Type definitions
 │
 ├── 🏢 platform/                         # Business Logic Layer
-│   ├── enterprise/                      # 기업 도메인
+│   ├── enterprise/                      # Enterprise domain
 │   │   ├── EnterpriseAuth.ts
 │   │   ├── DataPoolManager.ts
 │   │   └── SubscriptionManager.ts
-│   ├── user/                            # 사용자 도메인
+│   ├── user/                            # User domain
 │   │   ├── UserAuth.ts
 │   │   └── HealthDataManager.ts
-│   ├── xrpl/                            # XRPL 통합
+│   ├── xrpl/                            # XRPL integration
 │   │   ├── XrplWallet.ts
 │   │   ├── XrplEscrow.ts
 │   │   └── NftGenerator.ts
-│   ├── data/                            # 데이터 처리
+│   ├── data/                            # Data processing
 │   │   └── QualityEvaluator.ts
 │   └── types/                           # Platform types
 │
@@ -125,126 +125,35 @@ XRP_LEDGER/
 └── 📝 README.md                         # This file
 ```
 
-## 🎯 core/ - XRPL 기본 기능 모듈
+## 🎯 Core Features
 
-XRP Ledger와의 직접적인 상호작용을 담당하는 핵심 모듈들입니다.
+### 1. NFT-Based Subscription System
+Service access rights are managed through subscription NFTs with secure payment processing via escrow.
 
-| 파일 | 기능 |
-|------|------|
-| `config.ts` | XRPL 네트워크 설정 및 환경 변수 관리 |
-| `wallet.ts` | XRPL 지갑 생성 및 관리 |
-| `payment.ts` | XRP 및 토큰 결제 처리 |
-| `nft.ts` | NFT 발행 및 거래 |
-| `escrow.ts` | 에스크로 계약 관리 |
-| `dataPool.ts` | 데이터 풀 관련 기능 |
-| `firebase.ts` | Firebase 연동 모듈 |
-| `types.ts` | 공통 타입 정의 |
-| `utils.ts` | 유틸리티 함수 |
-| `index.ts` | 모듈 진입점 |
-
-## 💼 platform/ - 플랫폼 비즈니스 로직
-
-SportiQue 플랫폼의 핵심 비즈니스 로직을 구현한 모듈들입니다.
-
-### platform/enterprise/
-- `EnterpriseAuth.ts` - 기업 인증 및 권한 관리
-- `DataPoolManager.ts` - 기업용 데이터 풀 관리
-- `SubscriptionManager.ts` - 구독 서비스 관리
-
-### platform/user/
-- `UserAuth.ts` - 사용자 인증 및 권한 관리
-- `HealthDataManager.ts` - 건강 데이터 관리
-
-### platform/platform/
-- `DataPoolManager.ts` - 플랫폼 레벨 데이터 풀 관리
-- `RewardCalculator.ts` - 리워드 계산 로직
-- `SystemConfig.ts` - 시스템 설정 관리
-
-### platform/xrpl/
-- `XrplWallet.ts` - XRPL 지갑 통합 관리
-- `XrplEscrow.ts` - XRPL 에스크로 통합
-- `NftGenerator.ts` - NFT 생성 및 메타데이터 관리
-
-### platform/data/
-- `QualityEvaluator.ts` - 데이터 품질 평가 엔진
-
-### platform/types/
-- `index.ts` - 타입 정의 진입점
-- `user.ts` - 사용자 관련 타입
-- `health.ts` - 건강 데이터 타입
-- `enterprise.ts` - 기업 관련 타입
-
-## 🔄 transactions/ - 트랜잭션 처리 모듈
-
-XRPL 트랜잭션을 처리하고 관리하는 고급 모듈들입니다.
-
-| 파일 | 기능 |
-|------|------|
-| `index.ts` | 트랜잭션 모듈 진입점 |
-| `SubscriptionNFT.ts` | 구독 NFT 발행 및 관리 |
-| `SubscriptionEscrow.ts` | 구독 에스크로 계약 |
-| `PoolNFT.ts` | 데이터 풀 NFT 관리 |
-| `NFTAccessControl.ts` | NFT 기반 접근 제어 |
-| `DataPoolParticipation.ts` | 데이터 풀 참여 관리 |
-| `DataReward.ts` | 데이터 제공 리워드 처리 |
-
-### transactions/scripts/
-- `runDemo.ts` - 데모 실행 스크립트
-- `seedFirestore.ts` - Firestore 초기 데이터 설정
-
-## 🚀 주요 기능
-
-### 1. NFT 기반 구독 시스템
-- 구독 NFT 발행으로 서비스 접근 권한 관리
-- 에스크로를 통한 안전한 결제 처리
 <p align="center">
   <img src="https://github.com/user-attachments/assets/e4915f28-a7e1-437e-a7f0-fc6a4cc5ac67" height="450" alt="img3" />
   &nbsp;&nbsp;
   <img src="https://github.com/user-attachments/assets/ffbdbf16-49e9-495f-b100-15d1fdc24173" height="450" alt="img4" />
 </p>
 
-### 2. 데이터 풀 관리
-- 기업과 사용자 간 건강 데이터 거래
-- NFT 기반 데이터 소유권 증명
-- 왼쪽은 기업과 연구 기관 등에서 사용하는 인터페이스
-- 오른쪽은 개인이 사용하는 인터페이스
+### 2. Data Pool Management
+Facilitates health data trading between enterprises and users with NFT-based proof of data ownership.
+
 <p align="center">
   <img src="https://github.com/user-attachments/assets/f5cc1ac9-04a0-4d98-aea4-b5cb5d4e60cf" height="420" alt="img1" />
   &nbsp;&nbsp;
   <img src="https://github.com/user-attachments/assets/99e2a0b5-fdd0-451b-ae96-87a05fb07aea" height="420" alt="img2" />
 </p>
 
-### 3. 리워드 시스템
-- 데이터 제공자에게 자동 리워드 분배
-- 품질 평가 기반 차등 보상
+### 3. Reward System
+- Automatic reward distribution to data providers
+- Quality-based differential rewards
+- Batch processing for efficiency
 
-### 4. 보안 및 프라이버시
-- 익명화된 건강 데이터 처리
-- NFT 기반 접근 제어
-
-## 📝 사용 예시
-
-```typescript
-// 지갑 생성
-import { createWallet } from './core/wallet';
-const wallet = await createWallet();
-
-// NFT 발행
-import { mintNFT } from './core/nft';
-await mintNFT(wallet, metadata);
-
-// 구독 생성
-import { SubscriptionNFT } from './transactions/SubscriptionNFT';
-const subscription = new SubscriptionNFT();
-await subscription.createSubscription(enterpriseWallet, userAddress, amount);
-```
-
-## 🔧 설정
-
-각 모듈은 환경 변수를 통해 설정됩니다:
-- `XRPL_NETWORK`: 네트워크 선택 (testnet/mainnet)
-- `FIREBASE_CONFIG`: Firebase 프로젝트 설정
-- `NFT_TAXON`: NFT 분류 코드
+### 4. Security & Privacy
+- Anonymized health data processing
+- NFT-based access control
+- Zero PII on blockchain
 
 ## 📚 Technology Stack
 
@@ -362,4 +271,4 @@ MIT License - see LICENSE file for details
 
 **Built with ❤️ on the XRP Ledger**
 
-> SportiQue는 건강 데이터의 안전한 거래와 투명한 리워드 분배를 위한 완전한 블록체인 솔루션입니다.
+> SportiQue is a complete blockchain solution for secure health data trading and transparent reward distribution.
