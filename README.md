@@ -10,10 +10,21 @@ SportiQue는 XRP Ledger의 NFTokens, Escrow, MPT(Multi-Purpose Tokens)를 활용
 
 ## 📄 Documentation
 
-- **[Technical Design Document (PDF)](./SportiQue_XRPL_Technical_Design.pdf)** - 완전한 시스템 아키텍처 및 XRPL 통합 상세 설명
-- **[API Documentation](./API_DOCUMENTATION.md)** - REST API 엔드포인트 레퍼런스
-- **[XRPL Implementation Links](./XRPL_IMPLEMENTATION_LINKS.md)** - XRPL 기능별 코드 위치
-- **[Submission Guide](./SUBMISSION_GUIDE.md)** - 해커톤 제출 가이드
+### 📊 Presentation
+- **[UniQData Pitch Deck (PDF)](./docs/presentation/UniQData_Pitch_Deck.pdf)** - 비즈니스 프레젠테이션 및 서비스 소개
+
+### 📘 Technical Documentation
+- **[XRPL Technical Design (PDF)](./docs/technical/SportiQue_XRPL_Technical_Design.pdf)** - 완전한 시스템 아키텍처 및 XRPL 통합 상세 설명
+- **[XRPL Technical Implementation](./docs/technical/XRPL_TECHNICAL_IMPLEMENTATION.md)** - XRPL 기능 구현 가이드
+- **[XRPL Implementation Links](./docs/technical/XRPL_IMPLEMENTATION_LINKS.md)** - XRPL 기능별 코드 위치
+- **[XRPL Integration Details](./docs/technical/XRPL_INTEGRATION_DETAILS.md)** - XRPL 통합 세부사항
+- **[XRPL Core Requirements](./docs/technical/XRPL_CORE_REQUIREMENTS.md)** - XRPL 핵심 요구사항
+
+### 🔌 API Documentation
+- **[API Reference](./docs/api/API_DOCUMENTATION.md)** - REST API 엔드포인트 레퍼런스
+
+### 📝 Submission
+- **[Submission Guide](./docs/SUBMISSION_GUIDE.md)** - 해커톤 제출 가이드
 
 ## 🎯 Key XRPL Features
 
@@ -51,25 +62,67 @@ await createMPToken(platformWallet, {
 });
 ```
 
-## 📁 폴더 구조
+## 📁 Project Structure
 
 ```
 XRP_LEDGER/
-├── SportiQue_XRPL_Technical_Design.pdf  # 📄 기술 설계 문서
-├── core/                                # XRPL 기본 기능 모듈
+│
+├── 📄 docs/                             # 📚 Documentation
+│   ├── presentation/                    # 비즈니스 프레젠테이션
+│   │   └── UniQData_Pitch_Deck.pdf      # 피치덱 (11.3MB)
+│   ├── technical/                       # 기술 문서
+│   │   ├── SportiQue_XRPL_Technical_Design.pdf  # 시스템 설계 (225KB)
+│   │   ├── XRPL_TECHNICAL_IMPLEMENTATION.md
+│   │   ├── XRPL_IMPLEMENTATION_LINKS.md
+│   │   ├── XRPL_INTEGRATION_DETAILS.md
+│   │   └── XRPL_CORE_REQUIREMENTS.md
+│   ├── api/                             # API 문서
+│   │   └── API_DOCUMENTATION.md
+│   └── SUBMISSION_GUIDE.md              # 제출 가이드
+│
+├── 💻 core/                             # XRPL Core Modules
+│   ├── config.ts                        # Network configuration
+│   ├── wallet.ts                        # Wallet management
 │   ├── nft.ts                           # NFToken operations
 │   ├── escrow.ts                        # Escrow operations
 │   ├── mpt.ts                           # Multi-Purpose Tokens
 │   ├── payment.ts                       # XRP payments
-│   └── wallet.ts                        # Wallet management
-├── platform/                            # 플랫폼 비즈니스 로직
-│   ├── enterprise/                      # 기업 기능
-│   ├── user/                            # 사용자 기능
-│   └── xrpl/                            # XRPL 통합 레이어
-└── transactions/                        # 트랜잭션 처리 모듈
-    ├── NFTAccessControl.ts              # NFT 기반 접근 제어
-    ├── SubscriptionEscrow.ts            # 구독 결제 Escrow
-    └── DataReward.ts                    # MPT 리워드 분배
+│   ├── dataPool.ts                      # Data pool utilities
+│   ├── firebase.ts                      # Firebase integration
+│   └── types.ts                         # Type definitions
+│
+├── 🏢 platform/                         # Business Logic Layer
+│   ├── enterprise/                      # 기업 도메인
+│   │   ├── EnterpriseAuth.ts
+│   │   ├── DataPoolManager.ts
+│   │   └── SubscriptionManager.ts
+│   ├── user/                            # 사용자 도메인
+│   │   ├── UserAuth.ts
+│   │   └── HealthDataManager.ts
+│   ├── xrpl/                            # XRPL 통합
+│   │   ├── XrplWallet.ts
+│   │   ├── XrplEscrow.ts
+│   │   └── NftGenerator.ts
+│   ├── data/                            # 데이터 처리
+│   │   └── QualityEvaluator.ts
+│   └── types/                           # Platform types
+│
+├── 🔄 transactions/                     # Transaction Flows
+│   ├── NFTAccessControl.ts              # NFT-based access control
+│   ├── SubscriptionNFT.ts               # Subscription NFTs
+│   ├── SubscriptionEscrow.ts            # Subscription payments
+│   ├── PoolNFT.ts                       # Data pool NFTs
+│   ├── DataPoolParticipation.ts         # Pool participation
+│   ├── DataReward.ts                    # Reward distribution
+│   ├── MPTPointSystem.ts                # MPT point system
+│   └── scripts/                         # Demo scripts
+│       ├── dataPoolScenario.ts
+│       ├── mptScenario.ts
+│       └── seedFirestore.ts
+│
+├── 🎨 UI_SCREEN/                        # UI Screenshots
+├── 📦 package.json                      # Dependencies
+└── 📝 README.md                         # This file
 ```
 
 ## 🎯 core/ - XRPL 기본 기능 모듈
@@ -272,11 +325,12 @@ if (verifyNFTOwnership(nftId, requesterWallet)) {
 - AWS KMS key management
 - Decryption keys never exposed
 
-## 📖 Documentation
+## 📖 Additional Resources
 
+### Technical Deep Dive
 For detailed technical architecture, XRPL integration patterns, and system design, see:
 
-📄 **[SportiQue_XRPL_Technical_Design.pdf](./SportiQue_XRPL_Technical_Design.pdf)**
+📄 **[XRPL Technical Design (PDF)](./docs/technical/SportiQue_XRPL_Technical_Design.pdf)** (225KB)
 
 This comprehensive document includes:
 - System architecture diagrams
@@ -285,6 +339,16 @@ This comprehensive document includes:
 - Code organization
 - Security architecture
 - Deployment architecture
+
+### Business Overview
+For product vision, market analysis, and business model, see:
+
+📊 **[UniQData Pitch Deck (PDF)](./docs/presentation/UniQData_Pitch_Deck.pdf)** (11.3MB)
+
+- Service overview and features
+- Target market analysis
+- Revenue model
+- Team introduction
 
 ## 🤝 Contributing
 

@@ -58,9 +58,11 @@ ui-debug.log
 *.seed
 wallets/
 
-# Documentation build
+# Documentation build artifacts (keep docs/ folder structure)
 docs/_build/
 docs/.vuepress/dist/
+*.html
+!docs/**/*.html
 
 # OS files
 Thumbs.db
@@ -72,3 +74,6 @@ Thumbs.db
 *.bak
 *.backup
 *.old
+
+# Claude Code
+.claude/settings.local.json
